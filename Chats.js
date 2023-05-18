@@ -1,10 +1,11 @@
 const form = document.querySelector('#taskForm');
 const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector('#taskList');
-
+const modal = document.getElementById('exampleModal');
 const addContactBtn = document.querySelector('#addContactBtn');
 addContactBtn.addEventListener('click', () => {
-    $('#exampleModal').modal('show');
+    modal.classList.add('show');
+    modal.style.display = 'block';
 });
 
 const addTaskBtn = document.querySelector('#addTaskBtn');
@@ -12,7 +13,8 @@ addTaskBtn.addEventListener('click', () => {
     const newContact = taskInput.value.trim();
     if (newContact !== '') {
         addCon(newContact);
-        $('#exampleModal').modal('hide');
+        modal.classList.remove('show');
+        modal.style.display = 'none';
         taskInput.value = '';
     }
 });
