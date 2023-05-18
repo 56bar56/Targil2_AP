@@ -174,3 +174,6 @@ body {
     clear: both;
     display: table;
 }
+.no-dot-list {
+    list-style-type: none;
+  }

@@ -21,34 +21,11 @@
             </label>
         </div>
         <div class="container">
-            <div class="user1 clearfix">
-                <img src="https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg" alt="User 1">
-                <div class="speech-bubble">
-                    <p>Hello!</p>
-                </div>
-            </div>
-            <div class="user2 clearfix">
-                <img src="https://imgresizer.eurosport.com/unsafe/1200x1200/smart/filters:format(jpeg)/origin-imgresizer.eurosport.com/2011/12/05/788297-20811438-2560-1440.jpg" alt="User 2">
-                <div class="speech-bubble">
-                    <p>Hi there!</p>
-                </div>
-            </div>
-            <div class="user1 clearfix">
-                <img src="https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg" alt="User 1">
-                <div class="speech-bubble">
-                    <p>next year in FCB??</p>
-                </div>
-            </div>
-            <div class="user2 clearfix">
-                <img src="https://imgresizer.eurosport.com/unsafe/1200x1200/smart/filters:format(jpeg)/origin-imgresizer.eurosport.com/2011/12/05/788297-20811438-2560-1440.jpg" alt="User 2">
-                <div class="speech-bubble">
-                    <p>be'ezrat ashem!</p>
-                </div>
-            </div>
+            <ul class="list-message no-dot-list" id="messageList"></ul>
         </div>
         <form class="currentChatKey input-group mb-3">
-            <input id="textblock" type="text" class="form-control" placeholder="enter massage ..." aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button type="submit" class="btn btn-outline-secondary" id="button-addon2">send</button>
+            <input  type="text" id="messageInput" class="form-control" placeholder="enter massage ..." aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button type="button" id="sendMassege" class="btn btn-outline-secondary" id="button-addon2">send</button>
         </form>
     </div>
     <div class="contant">
