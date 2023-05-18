@@ -52,7 +52,7 @@
         </form>
     </div>
     <div class="contant">
-        <button data-bs-toggle="modal" class="btn btn-primary addContant" data-bs-target="#exampleModal">
+        <button id="addContactBtn" data-bs-toggle="modal" class="btn btn-primary addContant" data-bs-target="#exampleModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
                 <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
                 <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
@@ -66,29 +66,18 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Contant UserName"> 
-                </div>
+                    <form id="taskForm">
+                      <input type="name" id="taskInput" class="form-control" id="exampleFormControlInput1" placeholder="Contact UserName">
+                    </form>
+                  </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                  <button type="button" id="addTaskBtn" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">
-              <img src="https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg"  class="img-fluid rounded-circle" width="40" height="25">
-              Bar <p class="date">23/04/2023, 13:27</p>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <img src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTkxMTk2ODg4ODE2MjMyMTcy/imago1011960526h.jpg"  class="img-fluid rounded-circle" width="40" height="25">
-              Shoam <p class="date">23/04/2023, 13:27</p></a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <img src="https://images2.minutemediacdn.com/image/upload/c_fill,w_360,ar_1:1,f_auto,q_auto,g_auto/shape/cover/sport/robert-lewandowski-square-avatar-28bc08767b039510e355d19455dcf18d.jpg"  class="img-fluid rounded-circle" width="40" height="25">
-              Ariel <p class="date">23/04/2023, 13:27</p></a>
-            <a class="list-group-item list-group-item-action disabled">
-              <img src="https://cdn.vox-cdn.com/thumbor/91C8cGj1i1h9VlMayTiAorSoDpI=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22879573/1235519898.jpg"  class="img-fluid rounded-circle" width="40" height="25">
-              Ofek <p class="date">23/04/2023, 13:27</p></a>
-          </div>
+        <ul class="list-group" id="taskList"></ul>
+	    <script src="Chats.js"></script>
     </div>
 </body>
 </html>
