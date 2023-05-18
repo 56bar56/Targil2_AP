@@ -127,3 +127,31 @@ function addCon(newCon) {
     // Add click event listener to the newly created list item
     
 }
+
+
+//the message part of the screan
+const messageInput = document.querySelector('#messageInput');
+const messageList = document.querySelector('#messageList');
+const sendMassege =  document.querySelector('#sendMassege');
+
+//add new messeges
+sendMassege.addEventListener('click', () => {
+    const newMessage = messageInput.value;
+    const messageLiI = document.createElement('li');
+    messageLiI.classList.add('list-message-item');  // Add the class here
+    const linkMes1 = document.createElement('div');
+    const linkMes2 = document.createElement('div');
+    linkMes2.classList.add('speech-bubble');
+    linkMes1.href = '#';
+    linkMes1.classList.add('user2', 'clearfix');
+    const imgMessagei = document.createElement('img');
+    imgMessagei.src = 'https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg';
+    imgMessagei.setAttribute('alt','User 2');
+    const messageContenti = document.createTextNode(newMessage);
+    linkMes2.appendChild(messageContenti);
+    linkMes1.appendChild(imgMessagei);
+    linkMes1.appendChild(linkMes2);
+    messageLiI.appendChild(linkMes1);
+    messageList.appendChild(messageLiI);
+    messageInput.value = '';
+});
