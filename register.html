@@ -64,35 +64,17 @@
 		<br>
 		<div class="form-text">Already registered?&nbsp;<a onclick="location.href='LogIn.html'" class="link">click here</a>&nbsp;to log in</div>
 	</div>
-	<div class="message" id="messageRegisterUsername"></div>
-	<div class="message" id="messageRegisterPassword"></div>
-	<div class="message" id="messageRegisterProfilename"></div>
-	<div class="message" id="messageRegisterEmail"></div>
 
 
-	<!-- 
 	<div class="toast-container position-fixed bottom-0 end-0 p-3">
-		<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+		<div id="messageR" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 			<div class="toast-header">
-			<strong class="me-auto">ERROR</strong>
-			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				<strong class="me-auto">ERROR</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
 			</div>
-			<div class="toast-body message" id="messageRegisterProfilename">
-			</div>
+			<div class="toast-body message" id="messageRegister"></div>
 		</div>
 	</div>
-
-	<script>
-		const toastTrigger = document.getElementById('registerButton')
-		const toastLiveExample = document.getElementById('liveToast')
-		if (toastTrigger) {
-		const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-		toastTrigger.addEventListener('click', () => {
-			toastBootstrap.show()
-		})
-		}
-	</script>
-	-->
 
 	<script type="text/javascript">
 		const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
