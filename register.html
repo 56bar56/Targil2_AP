@@ -60,14 +60,16 @@
 	</div>
 </div>	
 	<div id="buttonBox" >
-		<button type="button" class="btn btn-primary btn-block btn-wide" onclick="location.href='Chats.html'">Register</button>
+		<button type="button" id="registerButton" class="btn btn-primary btn-block btn-wide">Register</button>
 		<br>
 		<div class="form-text">Already registered?&nbsp;<a onclick="location.href='LogIn.html'" class="link">click here</a>&nbsp;to log in</div>
 	</div>
-
+	<div class="message" id="messageRegisterProfilename"></div>
 	<script type="text/javascript">
 		const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 		const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 	</script>
+	<script src="ourJs.js"></script>
+
 </body>
 </html>
