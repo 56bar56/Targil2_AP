@@ -28,3 +28,6 @@
     text-decoration: underline !important;
     cursor: pointer;
   }
+  .message {
+    margin-top: 10px;
+  }
