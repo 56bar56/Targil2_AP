@@ -25,7 +25,7 @@
 		  <label for="inputPassword6" class="col-form-label">Password</label>
 		</div>
 		<div class="col-auto">
-		  <input type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline"
+		  <input type="password" id="inputPassword" class="form-control" aria-labelledby="passwordHelpInline"
 		  	data-bs-toggle="popover" data-bs-placement="right"
         	data-bs-custom-class="custom-popover"
         	data-bs-content="Must be 4-16 characters long, contain letters and numbers and a $, and must not contain spaces, or emoji.">
@@ -34,7 +34,7 @@
 	  <br>
 	  <div class="row g-3 align-items-center">
 		<div class="col-auto">
-			<label for="inputProfilename" class="col-form-label">inputProfile name</label>
+			<label for="inputProfilename" class="col-form-label">Profile name</label>
 		</div>
 		<div class="col-auto">
 			<input type="text" id="inputProfilename" class="form-control">
@@ -64,12 +64,43 @@
 		<br>
 		<div class="form-text">Already registered?&nbsp;<a onclick="location.href='LogIn.html'" class="link">click here</a>&nbsp;to log in</div>
 	</div>
+	<div class="message" id="messageRegisterUsername"></div>
+	<div class="message" id="messageRegisterPassword"></div>
 	<div class="message" id="messageRegisterProfilename"></div>
+	<div class="message" id="messageRegisterEmail"></div>
+
+
+	<!-- 
+	<div class="toast-container position-fixed bottom-0 end-0 p-3">
+		<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+			<strong class="me-auto">ERROR</strong>
+			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body message" id="messageRegisterProfilename">
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const toastTrigger = document.getElementById('registerButton')
+		const toastLiveExample = document.getElementById('liveToast')
+		if (toastTrigger) {
+		const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+		toastTrigger.addEventListener('click', () => {
+			toastBootstrap.show()
+		})
+		}
+	</script>
+	-->
+
 	<script type="text/javascript">
 		const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 		const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="ourJs.js"></script>
+
 
 </body>
 </html>
