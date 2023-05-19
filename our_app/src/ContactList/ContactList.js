@@ -47,7 +47,7 @@ function addCon(newCon) {
     // Remove active class from all items
     const taskItems = document.querySelectorAll('.list-group-item');
     // Attach click event listener to the newly created list item
-    /*
+    
     taskLi.addEventListener('click', () => {
         // Remove active class from the previously active item
         if (activeItem !== null) {
@@ -57,7 +57,7 @@ function addCon(newCon) {
         // Set the clicked item as the new active item
         taskLi.classList.add('active');
         activeItem = taskLi;
-    });*/
+    });
 }
 
   return (
