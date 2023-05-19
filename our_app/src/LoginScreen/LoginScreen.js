@@ -5,10 +5,10 @@ function LoginScreen() {
     const passwordInput = useRef(null);
     let [messageLoginF,setmessageLoginF] = useState('');
 
-    const loginDeatales = [
-        { username: "ofek", password: "12", profilename: "fati", email: "fati@gmail.com", img: "img1" },
-        { username: "bar", password: "123", profilename: "haaland", email: "haaland@gmail.com", img: "img2" },
-        { username: "ariel", password: "1234", profilename: "lewandowski", email: "lewandowski@gmail.com", img: "img3" }
+    const loginDetails = [
+      { username: "ofek", password: "12", profilename: "fati", email: "fati@gmail.com", img: "img1" },
+      { username: "bar", password: "123", profilename: "haaland", email: "haaland@gmail.com", img: "img2" },
+      { username: "ariel", password: "1234", profilename: "lewandowski", email: "lewandowski@gmail.com", img: "img3" }
     ];
      function logIn () {
         console.log("im herree");
@@ -64,4 +64,5 @@ function LoginScreen() {
 </div>
     );
 }
+
 export default LoginScreen;

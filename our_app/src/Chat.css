@@ -9,15 +9,14 @@ body {
     float: left;
 }
 .textB {
-    position: absolute;
-    top: 0%;
-    left: 35%;
-	height: 5%;
-    font-size: 550%;
+    top: 0px;
+    left: 50px;
+	height: 10px;
+    font-size: 100px;
     font-family: fantasy;
 }
 .header {
-	height: 20%;
+	height: 50px;
 	background-color: blue;
 }
 
@@ -76,7 +75,7 @@ body {
     padding-left: 35%;
  }
  .currentChatUser {
-    font-size: xx-large;
+    font-size: large;
     height: 5%;
  }
  .container {
