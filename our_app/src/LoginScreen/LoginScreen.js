@@ -15,10 +15,10 @@ function LoginScreen() {
         const username = usernameInput.current.value;
         const password = passwordInput.current.value;
         let weDontMove=1;
-        for (let i = 0; i < loginDeatales.length; i++) { //checking if the user and password exist
-            if (username === loginDeatales[i].username && password === loginDeatales[i].password) {
+        for (let i = 0; i < loginDetails.length; i++) { //checking if the user and password exist
+            if (username === loginDetails[i].username && password === loginDetails[i].password) {
                 weDontMove = 0;
-                i=loginDeatales.length;
+                i=loginDetails.length;
                // location.href='Chats.html';
             } 
         }
