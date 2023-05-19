@@ -1,23 +1,25 @@
-const form = document.querySelector('#taskForm');
 const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector('#taskList');
-
+const modal = document.getElementById('exampleModal');
 const addContactBtn = document.querySelector('#addContactBtn');
 addContactBtn.addEventListener('click', () => {
-    $('#exampleModal').modal('show');
+    modal.classList.add('show');
+    modal.style.display = 'block';
 });
 
 const addTaskBtn = document.querySelector('#addTaskBtn');
 addTaskBtn.addEventListener('click', () => {
+    console.log("hello");
     const newContact = taskInput.value.trim();
     if (newContact !== '') {
         addCon(newContact);
-        $('#exampleModal').modal('hide');
+        modal.classList.remove('show');
+        modal.style.display = 'none';
         taskInput.value = '';
     }
 });
 
-let activeItem = null; // Variable to store the active item
+let activeItem = 1; // Variable to store the active item
 
 function addCon(newCon) {
     const taskLi = document.createElement('li');
@@ -41,12 +43,10 @@ function addCon(newCon) {
 
     taskInput.value = '';
 
-    // Remove active class from all items
-    const taskItems = document.querySelectorAll('.list-group-item');
     // Attach click event listener to the newly created list item
     taskLi.addEventListener('click', () => {
         // Remove active class from the previously active item
-        if (activeItem !== null) {
+        if (activeItem!==1) {
             activeItem.classList.remove('active');
         }
 
