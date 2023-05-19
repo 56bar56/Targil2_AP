@@ -1,16 +1,17 @@
+import { useRef } from "react";
+import { useState } from "react";
 function RegisterScreen() {
     //Register
-    //const registerButton = document.getElementById('registerButton');
-    const newUsernameInput = document.getElementById('inputUsername');
-    const newPasswordInput = document.getElementById('inputPassword');
-    const newProfilenameInput = document.getElementById('inputProfilename');
-    const newEmailInput = document.getElementById('inputEmail');
+    const newUsernameInput = useRef(null);
+    const newPasswordInput = useRef(null);
+    const newProfilenameInput = useRef(null);
+    const newEmailInput = useRef(null);
     const newProfileImage = document.getElementById('inputPhoto');
 
-    const messageRegisterUsername = document.getElementById('messageRegisterUsername');
-    const messageRegisterPassword = document.getElementById('messageRegisterPassword');
-    const messageRegisterProfilename = document.getElementById('messageRegisterProfilename');
-    const messageRegisterEmail = document.getElementById('messageRegisterEmail');
+    let [messageRegisterUsername,setmessageRegisterUsername] = useState('');
+    let [messageRegisterPassword,setmessageRegisterPassword] = useState('');
+    let [messageRegisterProfilename, setmessageRegisterProfilename] = useState('');
+    let [messageRegisterEmail,setmessageRegisterEmail] = useState('');
 
     //List of all users
     const loginDeatales = [
@@ -19,34 +20,37 @@ function RegisterScreen() {
         { username: "ariel", password: "1234", profilename: "lewandowski", email: "lewandowski@gmail.com", img: "img3" }
     ];
     /*the case we press rgister*/
-    document.getElementById('registerButton').addEventListener('click', function() {
-        let regApproved = 1; //0- not valid, 1- valid
-        const newUsername = newUsernameInput.value;
-        const newPassword = newPasswordInput.value;
-        const newProfilename = newProfilenameInput.value;
-        const newEmail = newEmailInput.value;
-        const newImg = newProfileImage.value;
-        console.log("username: " + newUsername + ", password: " + newPassword + ", name: " + newProfilename + ", newEmail" + newEmail);
+    function registerButton() {
+        console.log("tohae11111111111111");
 
+        let regApproved = 1; //0- not valid, 1- valid
+        const newUsername = newUsernameInput.current.value;
+        const newPassword = newPasswordInput.current.value;
+        const newProfilename = newProfilenameInput.current.value;
+        const newEmail = newEmailInput.current.value;
+        console.log("tohae2222222222");
+
+        const newImg = 'hii'
+        console.log("username: " + newUsername + ", password: " + newPassword + ", name: " + newProfilename + ", newEmail" + newEmail);
 
         //checks wether username and email are already used
         for(let i=0; i<loginDeatales.length; i++) {
             if(loginDeatales[i].profilename === newProfilename) {
                 regApproved=0;
                 i=loginDeatales.length;
-                messageRegisterUsername.textContent = 'this username is already used';
+                setmessageRegisterUsername('this profileName is already used');
             }
             if(loginDeatales[i].email===newEmail) {
                 regApproved=0;
                 i=loginDeatales.length;
-                messageRegisterEmail.textContent = 'this email is alredy register here';
+                setmessageRegisterEmail('this email is alredy register here');
             }
         
         }
         //checks that username is not empty
         if(!(newUsername.trim())){
             regApproved=0;
-            messageRegisterUsername.textContent = 'Username is not valid';
+            setmessageRegisterUsername('Username is not valid');
         }
 
 
@@ -54,14 +58,14 @@ function RegisterScreen() {
         const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$])[A-Za-z\d$]{4,16}$/;
         const regex2 = /\p{Emoji}/u;
         if (!(regex.test(newPassword) && !/\s/.test(newPassword) && !(regex2.test(newPassword)))) { //valid
-            messageRegisterPassword.textContent = 'Password is not valid';
+            setmessageRegisterPassword('Password is not valid');
             regApproved=0;
         }
 
         //checks email
         const regex3 = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(!(regex3.test(newEmail))) {//invalid
-            messageRegisterEmail.textContent = 'Email is not valid';
+            setmessageRegisterEmail('Email is not valid');
             regApproved=0;
         }
 
@@ -70,10 +74,10 @@ function RegisterScreen() {
             loginDeatales.push(newDeat);
             window.location.href='Chats.html';
         }
-    });
+    }
     return (
         <div>
-            <div class="header">Register</div>
+            <div className="header">Register</div>
             <br></br>
             <br></br>
             <div id="registerBox">
@@ -82,7 +86,7 @@ function RegisterScreen() {
             <label htmlFor="inputUsername" className="col-form-label">Username</label>
             </div>
             <div className="col-auto">
-            <input type="text" id="inputUsername" className="form-control" />
+            <input type="text" ref = {newUsernameInput} className="form-control" />
             </div>
         </div>
         <br />
@@ -93,7 +97,7 @@ function RegisterScreen() {
             <div className="col-auto">
             <input
                 type="password"
-                id="inputPassword"
+                ref={newPasswordInput}
                 className="form-control"
                 aria-labelledby="passwordHelpInline"
                 data-bs-toggle="popover"
@@ -109,7 +113,7 @@ function RegisterScreen() {
             <label htmlFor="inputProfilename" className="col-form-label">Profile name</label>
             </div>
             <div className="col-auto">
-            <input type="text" id="inputProfilename" className="form-control" />
+            <input type="text" ref={newProfilenameInput} className="form-control" />
             </div>
         </div>
         <br />
@@ -120,7 +124,7 @@ function RegisterScreen() {
             <div className="col-auto">
             <input
                 type="text"
-                id="inputEmail"
+                ref={newEmailInput}
                 className="form-control"
                 placeholder="name@example.com"
             />
@@ -137,7 +141,7 @@ function RegisterScreen() {
         </div>
 
         <div id="buttonBox">
-            <button type="button" id="registerButton" className="btn btn-primary btn-block btn-wide">Register</button>
+            <button onClick={registerButton} className="btn btn-primary btn-block btn-wide">Register</button>
             <br />
             <div className="form-text">
             Already registered?&nbsp;
@@ -145,10 +149,10 @@ function RegisterScreen() {
             &nbsp;to log in
             </div>
         </div>
-        <div className="message" id="messageRegisterUsername"></div>
-        <div className="message" id="messageRegisterPassword"></div>
-        <div className="message" id="messageRegisterProfilename"></div>
-        <div className="message" id="messageRegisterEmail"></div>
+        <div className="message">{messageRegisterUsername}</div>
+        <div className="message">{messageRegisterPassword}</div>
+        <div className="message">{messageRegisterProfilename}</div>
+        <div className="message">{messageRegisterEmail}</div>
         </div>
     </div>
     );
