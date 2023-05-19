@@ -1,0 +1,8 @@
+function ChatSection() {
+
+    return (
+        <div>hello</div>
+
+    )
+}
+export default ChatSection;

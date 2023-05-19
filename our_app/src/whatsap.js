@@ -9,6 +9,7 @@ addContactBtn.addEventListener('click', () => {
 
 const addTaskBtn = document.querySelector('#addTaskBtn');
 addTaskBtn.addEventListener('click', () => {
+    console.log("hello");
     const newContact = taskInput.value.trim();
     if (newContact !== '') {
         addCon(newContact);
@@ -18,7 +19,7 @@ addTaskBtn.addEventListener('click', () => {
     }
 });
 
-let activeItem = null; // Variable to store the active item
+let activeItem = 1; // Variable to store the active item
 
 function addCon(newCon) {
     const taskLi = document.createElement('li');
@@ -45,7 +46,7 @@ function addCon(newCon) {
     // Attach click event listener to the newly created list item
     taskLi.addEventListener('click', () => {
         // Remove active class from the previously active item
-        if (activeItem !== null) {
+        if (activeItem!==1) {
             activeItem.classList.remove('active');
         }
 
