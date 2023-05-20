@@ -26,6 +26,12 @@ body {
 #buttonBox {
     margin-top: 20px;
 }
+.custom-popover.popover {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(100% + 5px);
+  }
 .link {
     color: blue !important;
     text-decoration: underline !important;
@@ -41,8 +47,9 @@ body {
     justify-content: center;
     display: flex;
 }
-message {
+.message {
     margin-top: 10px;
-    text-align: center;
+    text-align: right;
     color: red;
+    float: right;
   }
