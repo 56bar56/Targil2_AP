@@ -225,3 +225,9 @@ ul.list-message {
 .list-group-item.active {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+    list-style-type: none;
+  }
+  .leave {
+    color: white;
+  } 

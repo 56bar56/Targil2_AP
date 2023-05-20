@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
 function LoginScreen() {
     const usernameInput = useRef(null);
     const passwordInput = useRef(null);
@@ -53,9 +55,9 @@ function LoginScreen() {
       <br />
       <br />
       <h8>Not registered? </h8>
-      <a onClick={() => (window.location.href = 'register.html')} target="_blank" className="link">
+      <Link to="/register" className="link">
         click here
-      </a>
+      </Link>
       <h8> here to register </h8>
     </div>
   </div>
