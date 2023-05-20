@@ -228,4 +228,8 @@ ul.list-message {
 
 .leave {
     color: white;
+}
+.message {
+  text-align: center;
+  color: red;
 } 
