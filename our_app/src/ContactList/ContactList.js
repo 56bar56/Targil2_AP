@@ -1,12 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 function ContactList(props) {
+  let [messageAddContact,setmessageAddContact] = useState('');
   const taskInput = useRef(null);
   const taskList = useRef(null);
   const modal = useRef(null);
   const activeItem = useRef(null);
-  let [messageAddContact,setmessageAddContact] = useState('');
-
 
   function addContactBtn() {
     modal.current.classList.add('show');
@@ -39,9 +38,9 @@ function ContactList(props) {
         equal=i;
         break;
       }
+      
     }
     if(equal >= 0) {
-      const newChat=[];
       const taskLi = document.createElement('li');
   
       const link = document.createElement('div');
@@ -66,8 +65,13 @@ function ContactList(props) {
       // Remove active class from all items
       const taskItems = document.querySelectorAll('.list-group-item');
       // Attach click event listener to the newly created list item
-      const newPerson = {name: newCon, chat: newChat, task: taskLi };
-      props.users.push(newPerson);
+      const newChat=[];
+      const newPerson = { name: newCon, chat: newChat, task: taskLi };
+     // const newArray=[...props.users, newPerson];
+      //props.setUsers(prevArray => [...prevArray, newPerson]);
+      props.setUsers((prevUsers)=>{
+        let temp=[...prevUsers]
+        temp.push(newPerson);
       taskLi.addEventListener('click', () => {
         // Remove active class from the previously active item
         if (activeItem.current !== null) {
@@ -77,13 +81,26 @@ function ContactList(props) {
         // Set the clicked item as the new active item
         taskLi.classList.add('active');
         activeItem.current = taskLi;
-  
+        console.log(temp.length);
+
+        for(let i=0; i<temp.length;i++) {
+            if(temp[i].task.classList.contains('active')) {
+              props.chatSetMessage(temp[i].chat);
+              props.setchatState(i);
+              props.setnameTop(temp[i].name);
+            }
+        }
       });
+        return temp
+        }
+        );
+      
     } else {
       if(equal=== -1)
         setmessageAddContact('Username does not exist');
       else
         setmessageAddContact('Username was already added');
+
     }
    
   }
