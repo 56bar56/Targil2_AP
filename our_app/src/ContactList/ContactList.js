@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 function ContactList(props) {
   let [messageAddContact,setmessageAddContact] = useState('');
@@ -59,7 +59,11 @@ function ContactList(props) {
       // Attach click event listener to the newly created list item
       const newChat=[];
       const newPerson = { name: newCon, chat: newChat, task: taskLi };
-      props.setUsers(prevArray => [...prevArray, newPerson]);
+     // const newArray=[...props.users, newPerson];
+      //props.setUsers(prevArray => [...prevArray, newPerson]);
+      props.setUsers((prevUsers)=>{
+        let temp=[...prevUsers]
+        temp.push(newPerson);
       taskLi.addEventListener('click', () => {
         // Remove active class from the previously active item
         if (activeItem.current !== null) {
@@ -69,14 +73,20 @@ function ContactList(props) {
         // Set the clicked item as the new active item
         taskLi.classList.add('active');
         activeItem.current = taskLi;
-        for(let i=0; i<props.users.length;i++) {
-            if(props.users[i].task.classList.contains('active')) {
-              props.chatSetMessage(props.users[i].chat);
-              props.chatSetState(i);
-              props.setnameTop(props.users[i].name);
+        console.log(temp.length);
+
+        for(let i=0; i<temp.length;i++) {
+            if(temp[i].task.classList.contains('active')) {
+              props.chatSetMessage(temp[i].chat);
+              props.setchatState(i);
+              props.setnameTop(temp[i].name);
             }
         }
       });
+        return temp
+        }
+        );
+      
     } else {
       setmessageAddContact('Username does not exist');
 

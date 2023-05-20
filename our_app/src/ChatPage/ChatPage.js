@@ -13,8 +13,8 @@ function ChatPage(props) {
     return (
         <div>
         <ChatUp/>
-        <ChatSection users={chatsUsers} info={props.info} chatMessages={messages} chatSetMessage={setMessages} chatState= {chatState} nameTop={nameTop}/>
-        <ContactList users={chatsUsers} setUsers={setchatsUsers} info={props.info} chatSetMessage={setMessages} chatSetState={setchatState} setnameTop={setnameTop}/>
+        <ChatSection users={chatsUsers} info={props.info} chatMessages={messages} chatSetMessage={setMessages} chatState = {chatState} nameTop={nameTop}/>
+        <ContactList users={chatsUsers} setUsers={setchatsUsers} info={props.info} chatSetMessage={setMessages} setchatState={setchatState} chatState = {chatState} setnameTop={setnameTop}/>
         </div>
     );
   }
