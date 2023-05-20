@@ -1,21 +1,13 @@
 $(document).ready(function() {
-    //Login
-    //const loginButton = document.getElementById('loginButton');
-    const usernameInput = document.getElementById('usernameInput');
-    const passwordInput = document.getElementById('passwordInput');
-    //Register
-    //const registerButton = document.getElementById('registerButton');
-    const newUsernameInput = document.getElementById('inputUsername');
-    const newPasswordInput = document.getElementById('inputPassword');
-    const newProfilenameInput = document.getElementById('inputProfilename');
-    const newEmailInput = document.getElementById('inputEmail');
-    const newProfileImage = document.getElementById('inputPhoto');
+
     //Message for the user
-    const messageLoginF = document.getElementById('messageLoginF');
-    const messageRegisterUsername = document.getElementById('messageRegisterUsername');
-    const messageRegisterPassword = document.getElementById('messageRegisterPassword');
-    const messageRegisterProfilename = document.getElementById('messageRegisterProfilename');
-    const messageRegisterEmail = document.getElementById('messageRegisterEmail');
+    const toastTrigger1 = document.getElementById('loginButton');
+    const toastLiveExample1 = document.getElementById('messageL');
+
+    const toastTrigger2 = document.getElementById('registerButton');
+    const toastLiveExample2 = document.getElementById('messageR');
+
+
 
 
     //List of all users
@@ -27,9 +19,11 @@ $(document).ready(function() {
 
     /* the case we press login*/
     $('#loginButton').click(function() {
-        const username = usernameInput.value;
-        const password = passwordInput.value;
         let weDontMove=1;
+        messageLogin.textContent = '';
+        const username = $('#usernameInput').val();
+        const password = $('#passwordInput').val();
+        console.log("username: " + username + ", password: " + password);
         for (let i = 0; i < loginDeatales.length; i++) { //checking if the user and password exist
             if (username === loginDeatales[i].username && password === loginDeatales[i].password) {
                 weDontMove = 0;
@@ -38,55 +32,90 @@ $(document).ready(function() {
             } 
         }
         if(weDontMove) { //In case it is not exist, prints error message
-            messageLoginF.textContent = 'wrong password or username';
+            messageLogin.textContent = 'wrong password or username';
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample1)
+            toastTrigger1.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
         }
     });
 
-    /*the case we press rgister*/
+    /*the case we press register*/
     $('#registerButton').click(function() {
         let regApproved = 1; //0- not valid, 1- valid
-        const newUsername = newUsernameInput.value;
-        const newPassword = newPasswordInput.value;
-        const newProfilename = newProfilenameInput.value;
-        const newEmail = newEmailInput.value;
-        const newImg = newProfileImage.value;
-        console.log("username: " + newUsername + ", password: " + newPassword + ", name: " + newProfilename + ", newEmail" + newEmail);
+        messageRegister.textContent = '';
+        const newUsername = $('#inputUsername').val();
+        const newPassword = $('#inputPassword').val();
+        const newProfilename = $('#inputProfilename').val();
+        const newEmail = $('#inputEmail').val();
+        const newImg = $('#inputPhoto').val();
+        console.log("username: " + newUsername + ", password: " + newPassword + ", name: " + newProfilename + ", newEmail: " + newEmail);
 
 
         //checks wether username and email are already used
         for(let i=0; i<loginDeatales.length; i++) {
-            if(loginDeatales[i].profilename === newProfilename) {
+            if(loginDeatales[i].username === newUsername) {
                 regApproved=0;
                 i=loginDeatales.length;
-                messageRegisterUsername.textContent = 'this username is already used';
+                messageRegister.textContent += 'This username is already used ';
+                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample2)
+                toastTrigger2.addEventListener('click', () => {
+                    toastBootstrap.show()
+                })
             }
-            if(loginDeatales[i].email===newEmail) {
+            else if (loginDeatales[i].email === newEmail) {
                 regApproved=0;
                 i=loginDeatales.length;
-                messageRegisterEmail.textContent = 'this email is alredy register here';
+                messageRegister.textContent += 'This email is alredy used ';
+                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample2)
+                toastTrigger2.addEventListener('click', () => {
+                    toastBootstrap.show()
+                })
             }
         
         }
         //checks that username is not empty
         if(!(newUsername.trim())){
             regApproved=0;
-            messageRegisterUsername.textContent = 'Username is not valid';
+            messageRegister.textContent += 'Username is invalid ';
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample2)
+            toastTrigger2.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
         }
 
 
-        //checks password
+        // Checks password
         const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$])[A-Za-z\d$]{4,16}$/;
         const regex2 = /\p{Emoji}/u;
-        if (!(regex.test(newPassword) && !/\s/.test(newPassword) && !(regex2.test(newPassword)))) { //valid
-            messageRegisterPassword.textContent = 'Password is not valid';
-            regApproved=0;
+        if (!regex.test(newPassword) || /\s/.test(newPassword) || regex2.test(newPassword)) {// Invalid password
+            messageRegister.textContent += 'Password is invalid ';
+            regApproved = 0;
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample2)
+            toastTrigger2.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
         }
 
         //checks email
         const regex3 = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(!(regex3.test(newEmail))) {//invalid
-            messageRegisterEmail.textContent = 'Email is not valid';
+            messageRegister.textContent += 'Email is invalid ';
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample2)
+            toastTrigger2.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
             regApproved=0;
+        }
+
+        //checks that profile name is not empty
+        if(!(newProfilename.trim())){
+            regApproved=0;
+            messageRegister.textContent += 'Profile name is invalid ';
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample2)
+            toastTrigger2.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
         }
 
         if(regApproved) {

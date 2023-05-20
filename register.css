@@ -41,8 +41,3 @@ body {
     justify-content: center;
     display: flex;
 }
-message {
-    margin-top: 10px;
-    text-align: center;
-    color: red;
-  }
