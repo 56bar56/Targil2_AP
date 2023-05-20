@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 function RegisterScreen() {
     //Register
     const newUsernameInput = useRef(null);
@@ -145,7 +146,7 @@ function RegisterScreen() {
             <br />
             <div className="form-text">
             Already registered?&nbsp;
-            <a href="LogIn.html" className="link">click here</a>
+            <Link to ='/' className="link">click here</Link>
             &nbsp;to log in
             </div>
         </div>
