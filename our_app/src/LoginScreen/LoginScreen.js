@@ -10,9 +10,6 @@ function LoginScreen(props) {
     
      function logIn () {
       console.log(props.info.length);
-      for(let i; i<props.info.length;i++) {
-        console.log(props.info[i].username);
-      }
         const username = usernameInput.current.value;
         const password = passwordInput.current.value;
         let weDontMove=1;

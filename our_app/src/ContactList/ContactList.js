@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-function ContactList() {
-  const [contacts, setContacts] = useState([]);
+function ContactList(props) {
   const taskInput = useRef(null);
   const taskList = useRef(null);
   const modal = useRef(null);
@@ -23,6 +22,7 @@ function ContactList() {
   }
 
   function addCon(newCon) {
+    const newChat=[];
     const taskLi = document.createElement('li');
 
     const link = document.createElement('div');
@@ -48,7 +48,8 @@ function ContactList() {
     // Remove active class from all items
     const taskItems = document.querySelectorAll('.list-group-item');
     // Attach click event listener to the newly created list item
-
+    const newPerson = {name: newCon, chat: newChat, task: taskLi };
+    props.users.push(newPerson);
     taskLi.addEventListener('click', () => {
       // Remove active class from the previously active item
       if (activeItem.current !== null) {
@@ -58,6 +59,7 @@ function ContactList() {
       // Set the clicked item as the new active item
       taskLi.classList.add('active');
       activeItem.current = taskLi;
+
     });
   }
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-function ChatSection() {
+function ChatSection(props) {
   const [messageInputValue, setMessageInputValue] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -11,6 +10,7 @@ function ChatSection() {
   const handleSendMessage = () => {
     const newMessage = messageInputValue.trim();
     if (newMessage !== '') {
+      //props.users[onPosition].chat.push(newMessage)
       setMessages((prevMessages) => [...prevMessages, newMessage]);
       setMessageInputValue('');
     }
