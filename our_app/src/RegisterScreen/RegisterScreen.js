@@ -15,7 +15,10 @@ function RegisterScreen(props) {
   let [messageRegisterEmail, setmessageRegisterEmail] = useState("");
   const [showPasswordMessage, setShowPasswordMessage] = useState(false);
 
-
+  const isLetter = (char) => {
+    const charCode = char.charCodeAt(0);
+    return (charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122);
+  };
   function registerButton() {
     let regApproved = 1;
     const newUsername = newUsernameInput.current.value;
@@ -23,12 +26,14 @@ function RegisterScreen(props) {
     const newProfilename = newProfilenameInput.current.value;
     const newEmail = newEmailInput.current.value;
     const newImg = "hii";
-
+    setmessageRegisterUsername("");
+    setmessageRegisterEmail("");
+    setmessageRegisterPassword("");
     for (let i = 0; i < props.info.length; i++) {
-      if (props.info[i].profilename === newProfilename) {
+      if (props.info[i].username === newUsername) {
         regApproved = 0;
         i = props.info.length;
-        setmessageRegisterUsername("This profile name is already used");
+        setmessageRegisterUsername("This user name is already used");
       }
       if (props.info[i].email === newEmail) {
         regApproved = 0;
@@ -41,13 +46,36 @@ function RegisterScreen(props) {
       regApproved = 0;
       setmessageRegisterUsername("Username is not valid");
     }
-
-    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$])[A-Za-z\d$]{4,16}$/;
-    const regex2 = /\p{Emoji}/u;
-    if (!(regex.test(newPassword) && !/\s/.test(newPassword) && !regex2.test(newPassword))) {
+    if(newPassword.length>16||newPassword.length<4) {
       setmessageRegisterPassword("Password is not valid");
       regApproved = 0;
+    } else {
+      let have$=0;
+      let haveNum=0;
+      let haveLet=0;
+      let haveEmpjy=0;
+      for(let i=0;i<newPassword.length;i++) {
+          if(newPassword.charAt(i)==='$') {
+            have$=1;
+          }
+          if(newPassword.charAt(i).match(/[0-9]/)) {
+            haveNum=1;
+          }
+          if(isLetter(newPassword.charAt(i))) {
+            haveLet=1;
+          }
+          if (newPassword.charAt(i) >= 0x1F300 && newPassword.charAt(i) <= 0x1FFFF) { 
+            haveEmpjy=1;
+          }
+
+
+      }
+      if(!have$||!haveNum||!haveLet||haveEmpjy) {
+        setmessageRegisterPassword("Password is not valid");
+        regApproved = 0;
+      }
     }
+   
 
     const regex3 = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regex3.test(newEmail)) {
