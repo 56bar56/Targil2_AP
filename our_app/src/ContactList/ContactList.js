@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 
 function ContactList(props) {
+  let [messageAddContact,setmessageAddContact] = useState('');
   const taskInput = useRef(null);
   const taskList = useRef(null);
   const modal = useRef(null);
@@ -23,11 +24,16 @@ function ContactList(props) {
 
   function addCon(newCon) {
     let equal=-1;
-    for(let i=0;props.info.length;i++) {
+    for(let i=0;i<=props.info.length;i++) {
+      console.log(props.info[0].username);
+      console.log(newCon);
+
       if(newCon===props.info[i].username) {
+        console.log("hghg11111111111");
         equal=i;
-        i=props.info.length;
+        break;
       }
+      
     }
     if(equal!==-1) {
       const newChat=[];
@@ -66,10 +72,15 @@ function ContactList(props) {
         // Set the clicked item as the new active item
         taskLi.classList.add('active');
         activeItem.current = taskLi;
-  
+        for(let i=0; i<props.users.length;i++) {
+            if(props.users[i].task.contains('active')) {
+              props.chatSetMessage(props.users[i].task.chat);
+              props.chatSetState(i);
+            }
+        }
       });
     } else {
-        
+
     }
    
   }
@@ -141,6 +152,9 @@ function ContactList(props) {
   </div>
 </div>
 <ul className="list-group" id="taskList" ref={taskList}></ul>
+<div>
+  <div className="message">{messageAddContact}</div>
+</div>
 </div>
         );
         }
