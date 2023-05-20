@@ -8,6 +8,15 @@ body {
 .Logout {
     float: left;
 }
+ul.list-message {
+    max-height: 350px;
+    overflow-y: auto;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-y: auto;
+}
 .textB {
     top: 0px;
     left: 50px;
