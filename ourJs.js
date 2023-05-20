@@ -19,10 +19,11 @@ $(document).ready(function() {
 
     /* the case we press login*/
     $('#loginButton').click(function() {
+        let weDontMove=1;
         messageLogin.textContent = '';
         const username = $('#usernameInput').val();
         const password = $('#passwordInput').val();
-        let weDontMove=1;
+        console.log("username: " + username + ", password: " + password);
         for (let i = 0; i < loginDeatales.length; i++) { //checking if the user and password exist
             if (username === loginDeatales[i].username && password === loginDeatales[i].password) {
                 weDontMove = 0;
@@ -36,7 +37,6 @@ $(document).ready(function() {
             toastTrigger1.addEventListener('click', () => {
                 toastBootstrap.show()
             })
-
         }
     });
 
