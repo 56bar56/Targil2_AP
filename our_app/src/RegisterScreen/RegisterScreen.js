@@ -9,10 +9,10 @@ function RegisterScreen(props) {
   const newEmailInput = useRef(null);
   const newProfileImage = document.getElementById("inputPhoto");
   const navigate = useNavigate();
-  let [messageRegisterUsername, setmessageRegisterUsername] = useState("");
-  let [messageRegisterPassword, setmessageRegisterPassword] = useState("");
-  let [messageRegisterProfilename, setmessageRegisterProfilename] = useState("");
-  let [messageRegisterEmail, setmessageRegisterEmail] = useState("");
+  const [messageRegisterUsername, setmessageRegisterUsername] = useState("");
+  const [messageRegisterPassword, setmessageRegisterPassword] = useState("");
+  const [messageRegisterProfilename, setmessageRegisterProfilename] = useState("");
+  const [messageRegisterEmail, setmessageRegisterEmail] = useState("");
   const [showPasswordMessage, setShowPasswordMessage] = useState(false);
 
   const isLetter = (char) => {
@@ -25,19 +25,17 @@ function RegisterScreen(props) {
     const newPassword = newPasswordInput.current.value;
     const newProfilename = newProfilenameInput.current.value;
     const newEmail = newEmailInput.current.value;
-    const newImg = "hii";
+    const newImg = "https://cdn.vox-cdn.com/thumbor/91C8cGj1i1h9VlMayTiAorSoDpI=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22879573/1235519898.jpg";
     setmessageRegisterUsername("");
     setmessageRegisterEmail("");
     setmessageRegisterPassword("");
     for (let i = 0; i < props.info.length; i++) {
       if (props.info[i].username === newUsername) {
         regApproved = 0;
-        i = props.info.length;
         setmessageRegisterUsername("This user name is already used");
       }
       if (props.info[i].email === newEmail) {
         regApproved = 0;
-        i = props.info.length;
         setmessageRegisterEmail("This email is already registered here");
       }
     }
@@ -45,6 +43,10 @@ function RegisterScreen(props) {
     if (!newUsername.trim()) {
       regApproved = 0;
       setmessageRegisterUsername("Username is not valid");
+    }
+    if (!newProfilename.trim()) {
+      regApproved = 0;
+      setmessageRegisterProfilename("Profile Name is not valid");
     }
     if(newPassword.length>16||newPassword.length<4) {
       setmessageRegisterPassword("Password is not valid");
@@ -170,10 +172,15 @@ function RegisterScreen(props) {
             &nbsp;to log in
           </div>
         </div>
-        <div className="message">{messageRegisterUsername}</div>
-        <div className="message">{messageRegisterPassword}</div>
-        <div className="message">{messageRegisterProfilename}</div>
-        <div className="message">{messageRegisterEmail}</div>
+        <div className="message">
+        <div>{messageRegisterUsername}</div>
+        <br></br>
+        <div>{messageRegisterPassword}</div>
+        <br></br>
+        <div>{messageRegisterProfilename}</div>
+        <br></br>
+        <div>{messageRegisterEmail}</div>
+        </div>
       </div>
     </div>
   );
