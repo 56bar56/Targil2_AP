@@ -226,8 +226,6 @@ ul.list-message {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-    list-style-type: none;
-  }
-  .leave {
+.leave {
     color: white;
-  } 
+} 
