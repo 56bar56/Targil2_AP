@@ -5,7 +5,7 @@ function ContactList() {
   const taskInput = useRef(null);
   const taskList = useRef(null);
   const modal = useRef(null);
-  let activeItem = useRef(null);
+  const activeItem = useRef(null);
 
   function addContactBtn() {
     modal.current.classList.add('show');
@@ -47,17 +47,16 @@ function ContactList() {
 
     // Remove active class from all items
     const taskItems = document.querySelectorAll('.list-group-item');
-    // Attach click event listener to the newly created list item
-
-    taskLi.addEventListener('click', () => {
-      // Remove active class from the previously active item
-      if (activeItem.current !== null) {
-        activeItem.current.classList.remove('active');
-      }
-
-      // Set the clicked item as the new active item
-      taskLi.classList.add('active');
-      activeItem.current = taskLi;
+    taskItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        // Remove active class from the previously active item
+        if (activeItem.current !== null) {
+          activeItem.current.classList.remove('active');
+        }
+        // Set the clicked item as the new active item
+        item.classList.add('active');
+        activeItem.current = item;
+      });
     });
   }
 
@@ -81,31 +80,61 @@ function ContactList() {
           <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
         </svg>
       </button>
-      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" ref={modal}>
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        ref={modal}
+      >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
                 Add Contact:
               </h1>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() => {
+                  modal.current.classList.remove('show');
+                  modal.current.style.display = 'none';
+                }}
+              ></button>
             </div>
             <div className="modal-body">
               <form id="taskForm">
-                <input type="name" className="form-control" id="exampleFormControlInput1" ref={taskInput} placeholder="Contact UserName"></input>
+                <input
+                  type="name"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  ref={taskInput}
+                  placeholder="Contact UserName"
+                />
               </form>
             </div>
-            <div className="modal-footer">
-              <button onClick={addTaskBtn} className="btn btn-primary" data-bs-dismiss="modal">
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
+        <div className="modal-footer">
+        <button
+          onClick={addTaskBtn}
+          className="btn btn-primary"
+          data-bs-dismiss="modal"
+        >Save</button>
       </div>
-      <ul className="list-group" id="taskList" ref={taskList}></ul>
     </div>
-  );
-}
+  </div>
+</div>
+<ul className="list-group" id="taskList" ref={taskList}></ul>
+</div>
+        );
+        }
 
-export default ContactList;
+        export default ContactList;
+
+
+
+
+
+
