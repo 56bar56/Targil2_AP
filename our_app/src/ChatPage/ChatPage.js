@@ -3,6 +3,7 @@ import ChatUp from "../ChatUp/ChatUp";
 import ContactList from "../ContactList/ContactList";
 
 
+
 function ChatPage(props) {
     return (
         <div>
