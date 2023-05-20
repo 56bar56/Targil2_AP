@@ -1,6 +1,5 @@
-import { useRef } from "react";
-import { useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from "react";
 
 function RegisterScreen() {
@@ -9,7 +8,7 @@ function RegisterScreen() {
   const newProfilenameInput = useRef(null);
   const newEmailInput = useRef(null);
   const newProfileImage = document.getElementById("inputPhoto");
-
+  const navigate = useNavigate();
   let [messageRegisterUsername, setmessageRegisterUsername] = useState("");
   let [messageRegisterPassword, setmessageRegisterPassword] = useState("");
   let [messageRegisterProfilename, setmessageRegisterProfilename] = useState("");
@@ -64,7 +63,7 @@ function RegisterScreen() {
     if (regApproved) {
       const newDeat = { username: newUsername, password: newPassword, profilename: newProfilename, email: newEmail, img: newImg };
       loginDeatales.push(newDeat);
-      window.location.href = 'Chats.html';
+      navigate('/Chats'); // Navigate to the "/chat" route
     }
   }
 
