@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 function ChatSection(props) {
   const [messageInputValue, setMessageInputValue] = useState('');
-  const [messages, setMessages] = useState([]);
-
+  
   const handleInputChange = (event) => {
     setMessageInputValue(event.target.value);
   };
@@ -10,8 +9,8 @@ function ChatSection(props) {
   const handleSendMessage = () => {
     const newMessage = messageInputValue.trim();
     if (newMessage !== '') {
-      //props.users[onPosition].chat.push(newMessage)
-      setMessages((prevMessages) => [...prevMessages, newMessage]);
+      props.users[props.chatState].chat.push(newMessage)
+      props.chatSetMessage(props.users[props.chatState].chat);
       setMessageInputValue('');
     }
   };
@@ -34,7 +33,7 @@ function ChatSection(props) {
         </div>
         <div className="container">
           <ul className="list-message no-dot-list" id="messageList">
-            {messages.map((message, index) => (
+            {props.chatMessages.map((message, index) => (
               <li key={index} className="list-message-item">
                 <div className="user2 clearfix">
                   <img
