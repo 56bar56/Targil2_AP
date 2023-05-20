@@ -9,7 +9,8 @@ function ChatSection(props) {
   const handleSendMessage = () => {
     const newMessage = messageInputValue.trim();
     if (newMessage !== '') {
-      props.users[props.chatState].chat.push(newMessage)
+      console.log(props.users[props.chatState].name);
+      props.users[props.chatState].chat.push(newMessage);
       props.chatSetMessage(props.users[props.chatState].chat);
       setMessageInputValue('');
     }
@@ -28,7 +29,7 @@ function ChatSection(props) {
               height="25"
               alt="User 2"
             />
-            Bar
+            {props.nameTop}
           </label>
         </div>
         <div className="container">

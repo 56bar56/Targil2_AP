@@ -5,14 +5,16 @@ import { useState } from "react";
 
 
 function ChatPage(props) {
+    
     const [messages, setMessages] = useState([]);
-    const [chatState, setchatState]= useState(0);
+    const [chatState, setchatState]= useState(-1);
+    const [nameTop, setnameTop]= useState('');
     const chatsUsers= [];
     return (
         <div>
         <ChatUp/>
-        <ChatSection users={chatsUsers} info={props.info} chatMessages={messages} chatSetMessage={setMessages} chatState= {chatState}/>
-        <ContactList users={chatsUsers} info={props.info} chatSetMessage={setMessages} chatSetState={setchatState}/>
+        <ChatSection users={chatsUsers} info={props.info} chatMessages={messages} chatSetMessage={setMessages} chatState= {chatState} nameTop={nameTop}/>
+        <ContactList users={chatsUsers} info={props.info} chatSetMessage={setMessages} chatSetState={setchatState} setnameTop={setnameTop}/>
         </div>
     );
   }

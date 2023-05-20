@@ -34,7 +34,6 @@ function ContactList(props) {
       
     }
     if(equal!==-1) {
-      const newChat=[];
       const taskLi = document.createElement('li');
   
       const link = document.createElement('div');
@@ -59,7 +58,8 @@ function ContactList(props) {
       // Remove active class from all items
       const taskItems = document.querySelectorAll('.list-group-item');
       // Attach click event listener to the newly created list item
-      const newPerson = {name: newCon, chat: newChat, task: taskLi };
+      const newChat=[];
+      const newPerson = { name: newCon, chat: newChat, task: taskLi };
       props.users.push(newPerson);
       taskLi.addEventListener('click', () => {
         // Remove active class from the previously active item
@@ -71,9 +71,10 @@ function ContactList(props) {
         taskLi.classList.add('active');
         activeItem.current = taskLi;
         for(let i=0; i<props.users.length;i++) {
-            if(props.users[i].task.contains('active')) {
-              props.chatSetMessage(props.users[i].task.chat);
+            if(props.users[i].task.classList.contains('active')) {
+              props.chatSetMessage(props.users[i].chat);
               props.chatSetState(i);
+              props.setnameTop(props.users[i].name);
             }
         }
       });
