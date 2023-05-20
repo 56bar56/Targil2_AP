@@ -1,24 +1,25 @@
 import { useRef } from "react";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
-function LoginScreen() {
+function LoginScreen(props) {
+    
     const usernameInput = useRef(null);
     const passwordInput = useRef(null);
     let [messageLoginF,setmessageLoginF] = useState('');
     const navigate = useNavigate();
-    const loginDetails = [
-      { username: "ofek", password: "12", profilename: "fati", email: "fati@gmail.com", img: "img1" },
-      { username: "bar", password: "123", profilename: "haaland", email: "haaland@gmail.com", img: "img2" },
-      { username: "ariel", password: "1234", profilename: "lewandowski", email: "lewandowski@gmail.com", img: "img3" }
-    ];
+    
      function logIn () {
+      console.log(props.info.length);
+      for(let i; i<props.info.length;i++) {
+        console.log(props.info[i].username);
+      }
         const username = usernameInput.current.value;
         const password = passwordInput.current.value;
         let weDontMove=1;
-        for (let i = 0; i < loginDetails.length; i++) { //checking if the user and password exist
-            if (username === loginDetails[i].username && password === loginDetails[i].password) {
+        for (let i = 0; i < props.info.length; i++) { //checking if the user and password exist
+            if (username === props.info[i].username && password === props.info[i].password) {
                 weDontMove = 0;
-                i=loginDetails.length;
+                i=props.info.length;
                 navigate('/Chats'); // Navigate to the "/chat" route
             } 
         }

@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from "react";
 
-function RegisterScreen() {
+function RegisterScreen(props) {
   const newUsernameInput = useRef(null);
   const newPasswordInput = useRef(null);
   const newProfilenameInput = useRef(null);
@@ -15,11 +15,6 @@ function RegisterScreen() {
   let [messageRegisterEmail, setmessageRegisterEmail] = useState("");
   const [showPasswordMessage, setShowPasswordMessage] = useState(false);
 
-  const loginDeatales = [
-    { username: "ofek", password: "12", profilename: "fati", email: "fati@gmail.com", img: "img1" },
-    { username: "bar", password: "123", profilename: "haaland", email: "haaland@gmail.com", img: "img2" },
-    { username: "ariel", password: "1234", profilename: "lewandowski", email: "lewandowski@gmail.com", img: "img3" }
-  ];
 
   function registerButton() {
     let regApproved = 1;
@@ -29,15 +24,15 @@ function RegisterScreen() {
     const newEmail = newEmailInput.current.value;
     const newImg = "hii";
 
-    for (let i = 0; i < loginDeatales.length; i++) {
-      if (loginDeatales[i].profilename === newProfilename) {
+    for (let i = 0; i < props.info.length; i++) {
+      if (props.info[i].profilename === newProfilename) {
         regApproved = 0;
-        i = loginDeatales.length;
+        i = props.info.length;
         setmessageRegisterUsername("This profile name is already used");
       }
-      if (loginDeatales[i].email === newEmail) {
+      if (props.info[i].email === newEmail) {
         regApproved = 0;
-        i = loginDeatales.length;
+        i = props.info.length;
         setmessageRegisterEmail("This email is already registered here");
       }
     }
@@ -62,7 +57,7 @@ function RegisterScreen() {
 
     if (regApproved) {
       const newDeat = { username: newUsername, password: newPassword, profilename: newProfilename, email: newEmail, img: newImg };
-      loginDeatales.push(newDeat);
+      props.info.push(newDeat);
       navigate('/Chats'); // Navigate to the "/chat" route
     }
   }
