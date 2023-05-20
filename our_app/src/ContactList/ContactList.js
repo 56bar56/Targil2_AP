@@ -6,8 +6,6 @@ function ContactList(props) {
   const taskList = useRef(null);
   const modal = useRef(null);
   const activeItem = useRef(null);
-  let [messageAddContact,setmessageAddContact] = useState('');
-
 
   function addContactBtn() {
     modal.current.classList.add('show');
