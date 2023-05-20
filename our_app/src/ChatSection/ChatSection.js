@@ -9,9 +9,10 @@ function ChatSection(props) {
   const handleSendMessage = () => {
     const newMessage = messageInputValue.trim();
     if (newMessage !== '') {
-      console.log(props.users[props.chatState].name);
-      props.users[props.chatState].chat.push(newMessage);
-      props.chatSetMessage(props.users[props.chatState].chat);
+      console.log(props.chatState);
+      console.log(props.users[0].name);
+      props.users[0].chat.push(newMessage);
+      props.chatSetMessage(props.users[0].chat);
       setMessageInputValue('');
     }
   };
