@@ -28,11 +28,19 @@ function ContactList(props) {
     let equal=-1;
     for(let i=0; i< props.info.length;i++) {
       if(newCon===props.info[i].username) {
+        for(let j=0; j< props.users.length;j++) {
+          if(newCon===props.users[j].name) {
+            equal=-2;
+            break;
+          }
+        }
+        if(equal === -2)
+          break;
         equal=i;
         break;
       }
     }
-    if(equal!==-1) {
+    if(equal >= 0) {
       const newChat=[];
       const taskLi = document.createElement('li');
   
@@ -72,7 +80,10 @@ function ContactList(props) {
   
       });
     } else {
-      setmessageAddContact('Username does not exist');
+      if(equal=== -1)
+        setmessageAddContact('Username does not exist');
+      else
+        setmessageAddContact('Username was already added');
     }
    
   }
