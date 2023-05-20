@@ -27,7 +27,6 @@ function ContactList(props) {
     let equal=-1;
     for(let i=0; i< props.info.length;i++) {
       if(newCon===props.info[i].username) {
-        console.log("hghg11111111111");
         equal=i;
         break;
       }
@@ -60,7 +59,7 @@ function ContactList(props) {
       // Attach click event listener to the newly created list item
       const newChat=[];
       const newPerson = { name: newCon, chat: newChat, task: taskLi };
-      props.users.push(newPerson);
+      props.setUsers(prevArray => [...prevArray, newPerson]);
       taskLi.addEventListener('click', () => {
         // Remove active class from the previously active item
         if (activeItem.current !== null) {
