@@ -5,14 +5,12 @@ import ContactList from "../ContactList/ContactList";
 
 
 function ChatPage(props) {
-    const chats=[];
-    chats.push("welcom to our app");
-    const chatsUsers= [{name: "newCon", chat: [], task: null }];
+    const chatsUsers= [];
     return (
         <div>
         <ChatUp/>
-        <ChatSection users={chatsUsers}/>
-        <ContactList users={chatsUsers}/>
+        <ChatSection users={chatsUsers} info={props.info}/>
+        <ContactList users={chatsUsers} info={props.info}/>
         </div>
     );
   }

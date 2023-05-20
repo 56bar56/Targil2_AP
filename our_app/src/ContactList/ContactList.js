@@ -22,45 +22,56 @@ function ContactList(props) {
   }
 
   function addCon(newCon) {
-    const newChat=[];
-    const taskLi = document.createElement('li');
-
-    const link = document.createElement('div');
-    link.href = '#';
-    taskLi.classList.add('list-group-item');
-
-    const image = document.createElement('img');
-    image.src =
-      'https://cdn.vox-cdn.com/thumbor/91C8cGj1i1h9VlMayTiAorSoDpI=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22879573/1235519898.jpg';
-    image.classList.add('img-fluid', 'rounded-circle');
-    image.width = '40';
-    image.height = '25';
-
-    const name = document.createTextNode(newCon);
-    link.appendChild(image);
-    link.appendChild(name);
-
-    taskLi.appendChild(link);
-    taskList.current.appendChild(taskLi);
-
-    taskInput.current.value = '';
-
-    // Remove active class from all items
-    const taskItems = document.querySelectorAll('.list-group-item');
-    // Attach click event listener to the newly created list item
-    const newPerson = {name: newCon, chat: newChat, task: taskLi };
-    props.users.push(newPerson);
-    taskLi.addEventListener('click', () => {
-      // Remove active class from the previously active item
-      if (activeItem.current !== null) {
-        activeItem.current.classList.remove('active');
+    let equal=-1;
+    for(let i=0;props.info.length;i++) {
+      if(newCon===props.info[i].username) {
+        equal=i;
+        i=props.info.length;
       }
-
-      // Set the clicked item as the new active item
-      taskLi.classList.add('active');
-      activeItem.current = taskLi;
-
-    });
+    }
+    if(equal!==-1) {
+      const newChat=[];
+      const taskLi = document.createElement('li');
+  
+      const link = document.createElement('div');
+      link.href = '#';
+      taskLi.classList.add('list-group-item');
+  
+      const image = document.createElement('img');
+      image.src = props.info[equal].img;
+      image.classList.add('img-fluid', 'rounded-circle');
+      image.width = '40';
+      image.height = '25';
+  
+      const name = document.createTextNode(newCon);
+      link.appendChild(image);
+      link.appendChild(name);
+  
+      taskLi.appendChild(link);
+      taskList.current.appendChild(taskLi);
+  
+      taskInput.current.value = '';
+  
+      // Remove active class from all items
+      const taskItems = document.querySelectorAll('.list-group-item');
+      // Attach click event listener to the newly created list item
+      const newPerson = {name: newCon, chat: newChat, task: taskLi };
+      props.users.push(newPerson);
+      taskLi.addEventListener('click', () => {
+        // Remove active class from the previously active item
+        if (activeItem.current !== null) {
+          activeItem.current.classList.remove('active');
+        }
+  
+        // Set the clicked item as the new active item
+        taskLi.classList.add('active');
+        activeItem.current = taskLi;
+  
+      });
+    } else {
+        
+    }
+   
   }
 
   return (
