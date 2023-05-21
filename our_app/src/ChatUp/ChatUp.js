@@ -6,7 +6,16 @@ function ChatUp(props) {
     <div class="header">
         <button type="button" class="btn btn-outline-danger Logout">
             <Link to="/" class="btn leave" >Log Out</Link></button>
-        <div >Chat Room</div>
+        <div class="userPicName">
+                <img
+                src = {props.myImage}
+                className="img-fluid rounded-circle"
+                width="90"
+                height="90"                
+                />
+                <div className="speech-bubble userPicName">{props.inMyChat}</div>
+        </div>
+        <div>Chat Room</div>
     </div>
     )
 }
