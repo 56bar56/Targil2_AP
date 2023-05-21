@@ -11,7 +11,11 @@ function ContactList(props) {
     modal.current.classList.add('show');
     modal.current.style.display = 'block';
   }
-
+  function getCurrentTime() {
+    const currentTime = new Date();
+    const time = currentTime.toLocaleTimeString();
+    return time;
+  }
   function addTaskBtn() {
     const newContact = taskInput.current.value.trim();
     if (newContact !== '') {
@@ -56,8 +60,13 @@ function ContactList(props) {
       image.height = '25';
   
       const name = document.createTextNode(newCon);
+      const time = document.createElement('p');
+      time.className = 'time';
+      time.textContent = getCurrentTime();
+
       link.appendChild(image);
       link.appendChild(name);
+      link.appendChild(time);
   
       taskLi.appendChild(link);
       taskList.current.appendChild(taskLi);

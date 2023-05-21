@@ -229,7 +229,9 @@ ul.list-message {
   color: rgb(7, 29, 39);
   background-color: rgb(39, 195, 242);
 }
-
+.time {
+  text-align: right;
+}
 .leave {
     color: white;
 }
