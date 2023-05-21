@@ -10,7 +10,6 @@ function ChatPage(props) {
     const [chatState, setchatState]= useState(-1);
     const [nameTop, setnameTop]= useState('');
     const [chatsUsers,setchatsUsers]= useState([]);
-    const [imageVisible, setImageVisible] = useState(false);
     const [partnerImage,setpartnerImage]=useState('');
     return (
         <div>
