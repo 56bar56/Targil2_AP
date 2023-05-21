@@ -10,7 +10,8 @@ function ChatPage(props) {
     const [chatState, setchatState]= useState(-1);
     const [nameTop, setnameTop]= useState('');
     const [chatsUsers,setchatsUsers]= useState([]);
-    const [partnerImage,setpartnerImage]=useState("https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg");
+    const [imageVisible, setImageVisible] = useState(false);
+    const [partnerImage,setpartnerImage]=useState('');
     return (
         <div>
         <ChatUp inMyChat={props.inMyChat} myImage={props.myImage}/>

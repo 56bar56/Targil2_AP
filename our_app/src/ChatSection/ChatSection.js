@@ -23,14 +23,13 @@ function ChatSection(props) {
       <div className="currentChat">
         <div type="user" className="form-control namechat" id="floatingInputDisabled" disabled>
           <label htmlFor="floatingInputDisabled" className="currentChatUser">
-            <img
-              src="https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg"
-              //src={props.partnerImage}
+           {props.partnerImage&&(<img
+              src={props.partnerImage}
               className="img-fluid rounded-circle"
               width="40"
               height="25"
               alt="User 2"
-            />
+            />)}
             {props.nameTop}
           </label>
         </div>
