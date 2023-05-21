@@ -28,5 +28,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import {BrowserRouter , Routes, Route, Link}  from 'react-router-dom';
 and just using react and router and so on.
 
-
-
+### checking our app :
+if you want to check our code, we provide 3 registered contacts we already have in our app. the three contacts are :
+username - ofek, password - 12.
+username - bar, password - 123.
+username - ariel, password - 1234.
+if you also want to check the part of the chat page you can add contact and use this usernames to open a chat with them.

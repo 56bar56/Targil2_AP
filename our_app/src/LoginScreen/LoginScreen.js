@@ -9,7 +9,6 @@ function LoginScreen(props) {
     const navigate = useNavigate();
     
      function logIn () {
-      console.log(props.info.length);
         const username = usernameInput.current.value;
         const password = passwordInput.current.value;
         let weDontMove=1;
