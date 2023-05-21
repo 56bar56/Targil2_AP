@@ -88,6 +88,8 @@ function RegisterScreen(props) {
     if (regApproved) {
       const newDeat = { username: newUsername, password: newPassword, profilename: newProfilename, email: newEmail, img: newImg };
       props.info.push(newDeat);
+      props.setinMyChat(newUsername);
+      props.setmyImage(newImg);
       navigate('/Chats'); // Navigate to the "/chat" route
     }
   }
