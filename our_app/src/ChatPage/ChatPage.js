@@ -10,12 +10,11 @@ function ChatPage(props) {
     const [chatState, setchatState]= useState(-1);
     const [nameTop, setnameTop]= useState('');
     const [chatsUsers,setchatsUsers]= useState([]);
-    const [imageVisible, setImageVisible] = useState(false);
     const [partnerImage,setpartnerImage]=useState('');
     return (
         <div>
         <ChatUp inMyChat={props.inMyChat} myImage={props.myImage}/>
-        <ChatSection users={chatsUsers} info={props.info} chatMessages={messages} chatSetMessage={setMessages} chatState = {chatState} nameTop={nameTop} partnerImage={partnerImage} />
+        <ChatSection users={chatsUsers} info={props.info} chatMessages={messages} chatSetMessage={setMessages} chatState = {chatState} nameTop={nameTop} partnerImage={partnerImage} myImage={props.myImage} />
         <ContactList users={chatsUsers} setUsers={setchatsUsers} info={props.info} chatSetMessage={setMessages} setchatState={setchatState} chatState = {chatState} setnameTop={setnameTop} setpartnerImage={setpartnerImage}/>
         </div>
     );
