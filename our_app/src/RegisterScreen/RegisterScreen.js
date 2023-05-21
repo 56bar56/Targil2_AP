@@ -7,13 +7,14 @@ function RegisterScreen(props) {
   const newPasswordInput = useRef(null);
   const newProfilenameInput = useRef(null);
   const newEmailInput = useRef(null);
-  const newProfileImage = document.getElementById("inputPhoto");
+  const newImageProfileInput = useRef(null);
   const navigate = useNavigate();
   const [messageRegisterUsername, setmessageRegisterUsername] = useState("");
   const [messageRegisterPassword, setmessageRegisterPassword] = useState("");
   const [messageRegisterProfilename, setmessageRegisterProfilename] = useState("");
   const [messageRegisterEmail, setmessageRegisterEmail] = useState("");
   const [showPasswordMessage, setShowPasswordMessage] = useState(false);
+  //const [massageRegisterProfilePhoto, setMassageRegisterProfilePhoto] = useState('');
 
   const isLetter = (char) => {
     const charCode = char.charCodeAt(0);
@@ -25,7 +26,7 @@ function RegisterScreen(props) {
     const newPassword = newPasswordInput.current.value;
     const newProfilename = newProfilenameInput.current.value;
     const newEmail = newEmailInput.current.value;
-    const newImg = "https://cdn.vox-cdn.com/thumbor/91C8cGj1i1h9VlMayTiAorSoDpI=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22879573/1235519898.jpg";
+    const newImg = newImageProfileInput.current.value;
     setmessageRegisterUsername("");
     setmessageRegisterEmail("");
     setmessageRegisterPassword("");
@@ -39,7 +40,10 @@ function RegisterScreen(props) {
         setmessageRegisterEmail("This email is already registered here");
       }
     }
-
+    if (!newImg.trim()) {
+      regApproved = 0;
+      setmessageRegisterUsername("profile photo is not valid");
+    }
     if (!newUsername.trim()) {
       regApproved = 0;
       setmessageRegisterUsername("Username is not valid");
@@ -68,14 +72,14 @@ function RegisterScreen(props) {
           }
           if (newPassword.charAt(i) >= 0x1F300 && newPassword.charAt(i) <= 0x1FFFF) { 
             haveEmpjy=1;
-          }
+    }
 
 
       }
       if(!have$||!haveNum||!haveLet||haveEmpjy) {
-        setmessageRegisterPassword("Password is not valid");
-        regApproved = 0;
-      }
+      setmessageRegisterPassword("Password is not valid");
+      regApproved = 0;
+    }
     }
    
 
@@ -161,7 +165,7 @@ function RegisterScreen(props) {
             <label htmlFor="inputPhoto" className="col-form-label">Profile photo</label>
           </div>
           <div className="col-auto">
-            <input type="file" id="inputPhoto" className="form-control" />
+            <input type="file" ref={newImageProfileInput} id="inputPhoto" className="form-control" />
           </div>
         </div>
 
