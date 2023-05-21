@@ -16,6 +16,18 @@ function RegisterScreen(props) {
   const [showPasswordMessage, setShowPasswordMessage] = useState(false);
   //const [massageRegisterProfilePhoto, setMassageRegisterProfilePhoto] = useState('');
 
+    const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      props.setmyImage(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
   const isLetter = (char) => {
     const charCode = char.charCodeAt(0);
     return (charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122);
@@ -26,7 +38,7 @@ function RegisterScreen(props) {
     const newPassword = newPasswordInput.current.value;
     const newProfilename = newProfilenameInput.current.value;
     const newEmail = newEmailInput.current.value;
-    const newImg = newImageProfileInput.current.value;
+    const newImg = props.myImage;
     setmessageRegisterUsername("");
     setmessageRegisterEmail("");
     setmessageRegisterPassword("");
@@ -165,7 +177,7 @@ function RegisterScreen(props) {
             <label htmlFor="inputPhoto" className="col-form-label">Profile photo</label>
           </div>
           <div className="col-auto">
-            <input type="file" ref={newImageProfileInput} id="inputPhoto" className="form-control" />
+            <input type="file" onChange={handleImageUpload} id="inputPhoto" className="form-control" />
           </div>
         </div>
 
