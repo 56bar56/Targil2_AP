@@ -10,11 +10,15 @@ function ChatPage(props) {
     const [chatState, setchatState]= useState(-1);
     const [nameTop, setnameTop]= useState('');
     const [chatsUsers,setchatsUsers]= useState([]);
+    "https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg"
+
+    const [partnerImage,setpartnerImage]=useState("https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg"
+    );
     return (
         <div>
-        <ChatUp/>
-        <ChatSection users={chatsUsers} info={props.info} chatMessages={messages} chatSetMessage={setMessages} chatState = {chatState} nameTop={nameTop}/>
-        <ContactList users={chatsUsers} setUsers={setchatsUsers} info={props.info} chatSetMessage={setMessages} setchatState={setchatState} chatState = {chatState} setnameTop={setnameTop}/>
+        <ChatUp inMyChat={props.inMyChat} myImage={props.myImage}/>
+        <ChatSection users={chatsUsers} info={props.info} chatMessages={messages} chatSetMessage={setMessages} chatState = {chatState} nameTop={nameTop} partnerImage={partnerImage} />
+        <ContactList users={chatsUsers} setUsers={setchatsUsers} info={props.info} chatSetMessage={setMessages} setchatState={setchatState} chatState = {chatState} setnameTop={setnameTop} setpartnerImage={setpartnerImage}/>
         </div>
     );
   }

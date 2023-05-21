@@ -25,10 +25,12 @@ function ContactList(props) {
   function addCon(newCon) {
     setmessageAddContact('');
     let equal=-1;
+    let saveI=0;
     for(let i=0; i< props.info.length;i++) {
       if(newCon===props.info[i].username) {
         for(let j=0; j< props.users.length;j++) {
           if(newCon===props.users[j].name) {
+            saveI=j;
             equal=-2;
             break;
           }
@@ -66,7 +68,7 @@ function ContactList(props) {
       const taskItems = document.querySelectorAll('.list-group-item');
       // Attach click event listener to the newly created list item
       const newChat=[];
-      const newPerson = { name: newCon, chat: newChat, task: taskLi };
+      const newPerson = { name: newCon, chat: newChat, task: taskLi, img: props.users[saveI].img };
      // const newArray=[...props.users, newPerson];
       //props.setUsers(prevArray => [...prevArray, newPerson]);
       props.setUsers((prevUsers)=>{
@@ -88,6 +90,7 @@ function ContactList(props) {
               props.chatSetMessage(temp[i].chat);
               props.setchatState(i);
               props.setnameTop(temp[i].name);
+              props.setpartnerImage(temp[i].img);
             }
         }
       });

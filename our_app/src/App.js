@@ -1,5 +1,5 @@
 import './App.css';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import {BrowserRouter , Routes, Route, Link}  from 'react-router-dom';
 import LoginScreen from './LoginScreen/LoginScreen';
 import RegisterScreen from './RegisterScreen/RegisterScreen';
@@ -10,12 +10,14 @@ function App() {
     { username: "bar", password: "123", profilename: "haaland", email: "haaland@gmail.com", img: "https://static01.nyt.com/images/2022/10/30/multimedia/30onsoccer-hattracik--1-1cef/30onsoccer-hattracik--1-1cef-mediumSquareAt3X.jpg" },
     { username: "ariel", password: "1234", profilename: "lewandowski", email: "lewandowski@gmail.com", img: "https://static01.nyt.com/images/2021/04/29/sports/29soccer-lewandowski/29soccer-lewandowski-mediumSquareAt3X.jpg" }
   ];
+  const [inMyChat,setinMyChat]=useState('');
+  const [myImage,setmyImage]=useState('');
   return (
     <BrowserRouter>
     <Routes>
-      <Route path = "/" element = {<LoginScreen info = {loginDetails}/>}></Route>
-      <Route path = "/register" element = {<RegisterScreen info = {loginDetails} />}></Route>
-      <Route path = "/Chats" element = {<ChatPage info = {loginDetails} />}></Route>
+      <Route path = "/" element = {<LoginScreen info = {loginDetails} setinMyChat={setinMyChat} setmyImage={setmyImage}/>}></Route>
+      <Route path = "/register" element = {<RegisterScreen info = {loginDetails} setinMyChat={setinMyChat} setmyImage={setmyImage} />}></Route>
+      <Route path = "/Chats" element = {<ChatPage info = {loginDetails} inMyChat={inMyChat} myImage={myImage}/>}></Route>
     </Routes>
     </BrowserRouter>
   );

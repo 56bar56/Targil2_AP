@@ -16,6 +16,8 @@ function LoginScreen(props) {
         for (let i = 0; i < props.info.length; i++) { //checking if the user and password exist
             if (username === props.info[i].username && password === props.info[i].password) {
                 weDontMove = 0;
+                props.setinMyChat(username);
+                props.setmyImage(props.info[i].img);
                 i=props.info.length;
                 navigate('/Chats'); // Navigate to the "/chat" route
             } 
